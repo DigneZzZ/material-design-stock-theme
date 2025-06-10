@@ -1,23 +1,26 @@
 footer_scripts:
-  type: string
+  type: list
+  list_type: compact
   default: ""
   description:
-    en: "Custom footer scripts (analytics, counters, etc.). This code will be inserted before closing </body> tag on all pages."
-    ru: "Пользовательские скрипты для футера (аналитика, счетчики и т.д.). Этот код будет вставлен перед закрывающим тегом </body> на всех страницах."
+    en: "Custom footer scripts (analytics, counters, etc.). This code will be inserted before closing </body> tag on all pages. Each line will be added as separate HTML."
+    ru: "Пользовательские скрипты для футера (аналитика, счетчики и т.д.). Этот код будет вставлен перед закрывающим тегом </body> на всех страницах. Каждая строка будет добавлена как отдельный HTML."
 
 custom_meta_tags:
-  type: string
+  type: list
+  list_type: compact
   default: ""
   description:
-    en: "Custom meta tags for the head section. Enter HTML meta tags (e.g., <meta name='author' content='Your Name'>)"
-    ru: "Пользовательские мета-теги для секции head. Введите HTML мета-теги (например, <meta name='author' content='Ваше имя'>)"
+    en: "Custom meta tags for the head section. Enter HTML meta tags, one per line (e.g., <meta name='author' content='Your Name'>)"
+    ru: "Пользовательские мета-теги для секции head. Введите HTML мета-теги, по одному на строку (например, <meta name='author' content='Ваше имя'>)"
 
 custom_head_scripts:
-  type: string
+  type: list
+  list_type: compact
   default: ""
   description:
-    en: "Custom scripts for the head section (tracking pixels, verification codes, etc.)"
-    ru: "Пользовательские скрипты для секции head (пиксели отслеживания, коды верификации и т.д.)"
+    en: "Custom scripts for the head section (tracking pixels, verification codes, etc.). Each line will be added as separate HTML."
+    ru: "Пользовательские скрипты для секции head (пиксели отслеживания, коды верификации и т.д.). Каждая строка будет добавлена как отдельный HTML."
 
 yandex_metrika_id:
   type: string
