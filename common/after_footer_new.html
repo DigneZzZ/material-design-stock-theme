@@ -1,0 +1,133 @@
+<!-- Настраиваемые скрипты для аналитики и счетчиков -->
+<script>
+console.log('Material Design Theme - GIG: Начало загрузки after_footer');
+if (window.gigThemeDebug) {
+  window.gigThemeDebug.footerLoaded = true;
+  console.log('Текущее состояние отладки:', window.gigThemeDebug);
+}
+</script>
+
+<!-- Метод 1: Встраивание через data-атрибуты -->
+<div id="custom-footer-data-container" style="display:none;" 
+     data-footer-enabled="{{theme-setting 'enable_custom_footer_code'}}" 
+     data-footer-content="{{theme-setting 'custom_footer_code'}}"
+     data-ym-enabled="{{theme-setting 'enable_yandex_metrika'}}"
+     data-ym-id="{{theme-setting 'yandex_metrika_id'}}">
+</div>
+
+<!-- Метод 2: Прямая вставка через raw HTML -->
+{{#if theme-setting 'enable_custom_footer_code'}}
+  {{{theme-setting 'custom_footer_code'}}}
+{{/if}}
+
+<!-- Метод 3: Через скрипт с обработкой данных атрибутов -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Material Design Theme - GIG: DOM загружен (footer)');
+  
+  try {
+    // Получаем контейнер с данными
+    var container = document.getElementById('custom-footer-data-container');
+    if (!container) {
+      console.error('Не найден контейнер данных для footer');
+      return;
+    }
+    
+    // Выводим все data-атрибуты для отладки
+    console.log('Data атрибуты footer:', {
+      footerEnabled: container.dataset.footerEnabled,
+      footerContent: container.dataset.footerContent && container.dataset.footerContent.substring(0, 100) + '...',
+      ymEnabled: container.dataset.ymEnabled,
+      ymId: container.dataset.ymId
+    });
+    
+    // Яндекс.Метрика
+    if (container.dataset.ymEnabled === 'true' && container.dataset.ymId) {
+      console.log('Вставляем Яндекс.Метрику с ID:', container.dataset.ymId);
+      try {
+        // Создаем скрипт для Яндекс.Метрики
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        
+        // Инициализация счетчика с ID из настроек
+        ym(container.dataset.ymId, "init", {
+          clickmap: true,
+          trackLinks: true,
+          accurateTrackBounce: true
+        });
+        
+        // Добавляем noscript элемент для Яндекс.Метрики
+        var noscriptElement = document.createElement('noscript');
+        var divElement = document.createElement('div');
+        var imgElement = document.createElement('img');
+        
+        imgElement.src = "https://mc.yandex.ru/watch/" + container.dataset.ymId;
+        imgElement.style.position = "absolute";
+        imgElement.style.left = "-9999px";
+        imgElement.alt = "";
+        
+        divElement.appendChild(imgElement);
+        noscriptElement.appendChild(divElement);
+        document.body.appendChild(noscriptElement);
+        
+        console.log('Яндекс.Метрика установлена');
+      } catch (e) {
+        console.error('Ошибка при установке Яндекс.Метрики:', e);
+      }
+    }
+    
+    // Проверяем footer-код
+    if (container.dataset.footerEnabled === 'true' && container.dataset.footerContent) {
+      console.log('Вставляем footer-код');
+      try {
+        var customContainer = document.createElement('div');
+        customContainer.id = 'gig-theme-custom-footer';
+        customContainer.innerHTML = container.dataset.footerContent;
+        document.body.appendChild(customContainer);
+        
+        // Активируем скрипты
+        var scripts = customContainer.querySelectorAll('script');
+        for (var i = 0; i < scripts.length; i++) {
+          var script = document.createElement('script');
+          if (scripts[i].src) {
+            script.src = scripts[i].src;
+          }
+          if (scripts[i].textContent) {
+            script.textContent = scripts[i].textContent;
+          }
+          
+          // Копируем атрибуты
+          for (var j = 0; j < scripts[i].attributes.length; j++) {
+            var attr = scripts[i].attributes[j];
+            if (attr.name !== 'src') {
+              script.setAttribute(attr.name, attr.value);
+            }
+          }
+          
+          scripts[i].parentNode.replaceChild(script, scripts[i]);
+        }
+        
+        console.log('Footer код успешно вставлен');
+      } catch (e) {
+        console.error('Ошибка при вставке footer-кода:', e);
+      }
+    }
+  } catch (e) {
+    console.error('Общая ошибка в after_footer.html:', e);
+  }
+  
+  // Обновляем отладочную информацию
+  if (window.gigThemeDebug) {
+    window.gigThemeDebug.footerComplete = true;
+    window.gigThemeDebug.timestamp = new Date().toISOString();
+    console.log('Итоговое состояние отладки:', window.gigThemeDebug);
+  }
+});
+</script>
+
+<script>
+console.log('Material Design Theme - GIG: Конец загрузки after_footer');
+</script>

@@ -1,51 +1,113 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
 
-<!-- Пользовательские мета-теги -->
+<!-- Базовая структура для отладки -->
 <script>
-(function() {
-  try {
-    var themeSettings = window.require('discourse/lib/theme-settings').getObjectForTheme(settings.theme_id) || {};
-    
-    // Инжектируем пользовательские мета-теги
-    if (themeSettings.enable_custom_meta_tags && themeSettings.custom_meta_tags) {
-      var tempContainer = document.createElement('div');
-      tempContainer.innerHTML = themeSettings.custom_meta_tags;
-      
-      var metaTags = tempContainer.querySelectorAll('meta');
-      for (var i = 0; i < metaTags.length; i++) {
-        document.head.appendChild(metaTags[i].cloneNode(true));
-      }
-    }
-    
-    // Инжектируем пользовательский HTML-код
-    if (themeSettings.enable_custom_head_code && themeSettings.custom_head_code) {
-      var tempContainer = document.createElement('div');
-      tempContainer.innerHTML = themeSettings.custom_head_code;
-      
-      var fragment = document.createDocumentFragment();
-      while (tempContainer.firstChild) {
-        fragment.appendChild(tempContainer.firstChild);
-      }
-      
-      document.head.appendChild(fragment);
-    }
-  } catch(e) {
-    console.error('Ошибка инжектирования пользовательского кода в head:', e);
-  }
-})();
+console.log('Material Design Theme - GIG: Начало загрузки head_tag');
 </script>
 
-<!-- Тестовый код (можно удалить после отладки) -->
+<!-- Метод 1: Встраивание через data-атрибуты -->
+<div id="custom-meta-data-container" style="display:none;" 
+     data-meta-enabled="{{theme-setting 'enable_custom_meta_tags'}}" 
+     data-meta-content="{{theme-setting 'custom_meta_tags'}}"
+     data-head-enabled="{{theme-setting 'enable_custom_head_code'}}"
+     data-head-content="{{theme-setting 'custom_head_code'}}">
+</div>
+
+<!-- Метод 2: Прямая вставка через raw HTML -->
+{{#if theme-setting 'enable_custom_meta_tags'}}
+  {{{theme-setting 'custom_meta_tags'}}}
+{{/if}}
+
+{{#if theme-setting 'enable_custom_head_code'}}
+  {{{theme-setting 'custom_head_code'}}}
+{{/if}}
+
+<!-- Метод 3: Через скрипт с обработкой данных атрибутов -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('Material Design Theme - GIG: DOM загружен');
+  
   try {
-    console.log('Material Design Theme - GIG: Theme settings loaded');
+    // Получаем контейнер с данными
+    var container = document.getElementById('custom-meta-data-container');
+    if (!container) {
+      console.error('Не найден контейнер данных');
+      return;
+    }
     
-    // Для отладки - выводим все доступные настройки темы в консоль
-    var themeSettings = window.require('discourse/lib/theme-settings').getObjectForTheme(settings.theme_id);
-    console.log('Theme Settings:', themeSettings);
-  } catch(e) {
-    console.error('Ошибка отладки настроек темы:', e);
+    // Выводим все data-атрибуты для отладки
+    console.log('Data атрибуты:', {
+      metaEnabled: container.dataset.metaEnabled,
+      metaContent: container.dataset.metaContent,
+      headEnabled: container.dataset.headEnabled,
+      headContent: container.dataset.headContent
+    });
+    
+    // Проверяем мета-теги
+    if (container.dataset.metaEnabled === 'true' && container.dataset.metaContent) {
+      console.log('Вставляем мета-теги');
+      try {
+        var tempDiv = document.createElement('div');
+        tempDiv.innerHTML = container.dataset.metaContent;
+        var metaTags = tempDiv.querySelectorAll('meta');
+        for (var i = 0; i < metaTags.length; i++) {
+          document.head.appendChild(metaTags[i]);
+        }
+      } catch (e) {
+        console.error('Ошибка при вставке мета-тегов:', e);
+      }
+    }
+    
+    // Проверяем head-код
+    if (container.dataset.headEnabled === 'true' && container.dataset.headContent) {
+      console.log('Вставляем head-код');
+      try {
+        var tempDiv = document.createElement('div');
+        tempDiv.innerHTML = container.dataset.headContent;
+        
+        // Вставляем всё содержимое кроме скриптов
+        var elements = tempDiv.querySelectorAll('*:not(script)');
+        for (var i = 0; i < elements.length; i++) {
+          document.head.appendChild(elements[i]);
+        }
+        
+        // Вставляем скрипты отдельно
+        var scripts = tempDiv.querySelectorAll('script');
+        for (var i = 0; i < scripts.length; i++) {
+          var script = document.createElement('script');
+          if (scripts[i].src) {
+            script.src = scripts[i].src;
+          }
+          if (scripts[i].textContent) {
+            script.textContent = scripts[i].textContent;
+          }
+          
+          // Копируем атрибуты
+          for (var j = 0; j < scripts[i].attributes.length; j++) {
+            var attr = scripts[i].attributes[j];
+            if (attr.name !== 'src') {
+              script.setAttribute(attr.name, attr.value);
+            }
+          }
+          
+          document.head.appendChild(script);
+        }
+      } catch (e) {
+        console.error('Ошибка при вставке head-кода:', e);
+      }
+    }
+  } catch (e) {
+    console.error('Общая ошибка в head_tag.html:', e);
   }
 });
+</script>
+
+<!-- Метод 4: Глобальная переменная для отладки -->
+<script>
+window.gigThemeDebug = {
+  version: '1.5.1',
+  headLoaded: true,
+  timestamp: new Date().toISOString()
+};
+console.log('Material Design Theme - GIG: Конец загрузки head_tag');
 </script>
