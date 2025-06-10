@@ -12,6 +12,52 @@ enable_yandex_metrika:
     en: "Enable Yandex Metrika counter"
     ru: "Включить счетчик Яндекс.Метрики"
 
+# Пользовательские мета-теги в head
+enable_custom_meta_tags:
+  type: bool
+  default: false
+  description:
+    en: "Enable custom meta tags in page head"
+    ru: "Включить пользовательские мета-теги в head страницы"
+
+custom_meta_tags:
+  type: string
+  default: ""
+  description:
+    en: "Custom meta tags for page head (full HTML)"
+    ru: "Пользовательские мета-теги для head страницы (полный HTML)"
+
+# Пользовательский HTML в head
+enable_custom_head_code:
+  type: bool
+  default: false
+  description:
+    en: "Enable custom HTML code in page head"
+    ru: "Включить пользовательский HTML-код в head страницы"
+
+custom_head_code:
+  type: string
+  default: ""
+  description:
+    en: "Custom HTML code for page head (scripts, styles, etc.)"
+    ru: "Пользовательский HTML-код для head страницы (скрипты, стили и т.д.)"
+
+# Пользовательский HTML в footer
+enable_custom_footer_code:
+  type: bool
+  default: false
+  description:
+    en: "Enable custom HTML code in page footer"
+    ru: "Включить пользовательский HTML-код в footer страницы"
+
+custom_footer_code:
+  type: string
+  default: ""
+  description:
+    en: "Custom HTML code for page footer (analytics, scripts, etc.)"
+    ru: "Пользовательский HTML-код для footer страницы (аналитика, скрипты и т.д.)"
+
+# Тестовое поле (можно удалить после отладки)
 test_custom_code:
   type: string
   default: ""

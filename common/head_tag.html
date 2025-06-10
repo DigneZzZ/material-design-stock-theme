@@ -1,24 +1,51 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
 
-<!-- Тест пользовательского кода -->
+<!-- Пользовательские мета-теги -->
 <script>
 (function() {
-  // Получаем доступ к настройкам темы
-  var themeSettings = settings || {};
-  
-  // Проверяем наличие пользовательского кода
-  if (themeSettings.test_custom_code) {
-    // Создаем div для вставки кода
-    var customCodeContainer = document.createElement('div');
-    customCodeContainer.innerHTML = themeSettings.test_custom_code;
+  try {
+    var themeSettings = window.require('discourse/lib/theme-settings').getObjectForTheme(settings.theme_id) || {};
     
-    // Вставляем все дочерние элементы в head
-    var fragment = document.createDocumentFragment();
-    while (customCodeContainer.firstChild) {
-      fragment.appendChild(customCodeContainer.firstChild);
+    // Инжектируем пользовательские мета-теги
+    if (themeSettings.enable_custom_meta_tags && themeSettings.custom_meta_tags) {
+      var tempContainer = document.createElement('div');
+      tempContainer.innerHTML = themeSettings.custom_meta_tags;
+      
+      var metaTags = tempContainer.querySelectorAll('meta');
+      for (var i = 0; i < metaTags.length; i++) {
+        document.head.appendChild(metaTags[i].cloneNode(true));
+      }
     }
     
-    document.head.appendChild(fragment);
+    // Инжектируем пользовательский HTML-код
+    if (themeSettings.enable_custom_head_code && themeSettings.custom_head_code) {
+      var tempContainer = document.createElement('div');
+      tempContainer.innerHTML = themeSettings.custom_head_code;
+      
+      var fragment = document.createDocumentFragment();
+      while (tempContainer.firstChild) {
+        fragment.appendChild(tempContainer.firstChild);
+      }
+      
+      document.head.appendChild(fragment);
+    }
+  } catch(e) {
+    console.error('Ошибка инжектирования пользовательского кода в head:', e);
   }
 })();
+</script>
+
+<!-- Тестовый код (можно удалить после отладки) -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    console.log('Material Design Theme - GIG: Theme settings loaded');
+    
+    // Для отладки - выводим все доступные настройки темы в консоль
+    var themeSettings = window.require('discourse/lib/theme-settings').getObjectForTheme(settings.theme_id);
+    console.log('Theme Settings:', themeSettings);
+  } catch(e) {
+    console.error('Ошибка отладки настроек темы:', e);
+  }
+});
 </script>
