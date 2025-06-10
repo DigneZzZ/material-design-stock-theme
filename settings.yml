@@ -1,7 +1,6 @@
 footer_scripts:
-  type: textarea
-  default: |
-    <!-- Здесь можно добавить код счетчика -->
+  type: string
+  default: ""
   description:
     en: "Custom footer scripts (analytics, counters, etc.). This code will be inserted before closing </body> tag on all pages."
     ru: "Пользовательские скрипты для футера (аналитика, счетчики и т.д.). Этот код будет вставлен перед закрывающим тегом </body> на всех страницах."
