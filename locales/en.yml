@@ -3,9 +3,9 @@ en:
     description: "Material Design theme specially customized for GIG project with configurable analytics counters and enhanced customization options"
   theme_translations:
     settings:
-      footer_scripts: "Custom footer scripts (analytics, counters, etc.). This code will be inserted before closing </body> tag on all pages."
-      custom_meta_tags: "Custom meta tags for the head section. Enter HTML meta tags (e.g., <meta name='author' content='Your Name'>)"
-      custom_head_scripts: "Custom scripts for the head section (tracking pixels, verification codes, etc.)"
+      footer_scripts: "Custom footer scripts (analytics, counters, etc.). This code will be inserted before closing </body> tag on all pages. Each line will be added as separate HTML."
+      custom_meta_tags: "Custom meta tags for the head section. Enter HTML meta tags, one per line (e.g., <meta name='author' content='Your Name'>)"
+      custom_head_scripts: "Custom scripts for the head section (tracking pixels, verification codes, etc.). Each line will be added as separate HTML."
       yandex_metrika_id: "Yandex Metrika counter ID (only numbers)"
       google_analytics_id: "Google Analytics 4 Measurement ID (format: G-XXXXXXXXXX)"
       enable_yandex_metrika: "Enable Yandex Metrika counter"
