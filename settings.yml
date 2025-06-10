@@ -1,37 +1,9 @@
-footer_scripts:
-  type: string
-  default: ""
-  description:
-    en: "Custom footer scripts (analytics, counters, etc.). This code will be inserted before closing </body> tag on all pages."
-    ru: "Пользовательские скрипты для футера (аналитика, счетчики и т.д.). Этот код будет вставлен перед закрывающим тегом </body> на всех страницах."
-
-custom_meta_tags:
-  type: string
-  default: ""
-  description:
-    en: "Custom meta tags for the head section. Enter HTML meta tags (e.g., <meta name='author' content='Your Name'>)"
-    ru: "Пользовательские мета-теги для секции head. Введите HTML мета-теги (например, <meta name='author' content='Ваше имя'>)"
-
-custom_head_scripts:
-  type: string
-  default: ""
-  description:
-    en: "Custom scripts for the head section (tracking pixels, verification codes, etc.)"
-    ru: "Пользовательские скрипты для секции head (пиксели отслеживания, коды верификации и т.д.)"
-
 yandex_metrika_id:
   type: string
   default: ""
   description:
     en: "Yandex Metrika counter ID (only numbers)"
     ru: "ID счетчика Яндекс.Метрики (только цифры)"
-
-google_analytics_id:
-  type: string
-  default: ""
-  description:
-    en: "Google Analytics 4 Measurement ID (format: G-XXXXXXXXXX)"
-    ru: "ID Google Analytics 4 (формат: G-XXXXXXXXXX)"
 
 enable_yandex_metrika:
   type: bool
@@ -40,30 +12,9 @@ enable_yandex_metrika:
     en: "Enable Yandex Metrika counter"
     ru: "Включить счетчик Яндекс.Метрики"
 
-enable_google_analytics:
-  type: bool
-  default: false
+test_custom_code:
+  type: string
+  default: ""
   description:
-    en: "Enable Google Analytics 4"
-    ru: "Включить Google Analytics 4"
-
-enable_custom_footer_scripts:
-  type: bool
-  default: false
-  description:
-    en: "Enable custom footer scripts"
-    ru: "Включить пользовательские скрипты футера"
-
-enable_custom_meta_tags:
-  type: bool
-  default: false
-  description:
-    en: "Enable custom meta tags"
-    ru: "Включить пользовательские мета-теги"
-
-enable_custom_head_scripts:
-  type: bool
-  default: false
-  description:
-    en: "Enable custom head scripts"
-    ru: "Включить пользовательские скрипты в head"
+    en: "Test custom code"
+    ru: "Тестовый пользовательский код"
