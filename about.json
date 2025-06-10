@@ -1,8 +1,9 @@
 {
   "name": "Material Design Theme - GIG",
-  "version": "1.4.0",
   "about_url": "#",
   "license_url": "#",
+  "version": "1.4.1",
+  "authors": "ВашеИмя",
   "description": "Модифицированная Material Design тема специально для проекта GIG. Включает настраиваемые счетчики аналитики и дополнительные возможности кастомизации.",
   "color_schemes": {
     "Material Teal/Amber": {
