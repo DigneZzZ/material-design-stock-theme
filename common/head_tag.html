@@ -3,14 +3,14 @@
 
 <!-- Пользовательские мета-теги -->
 {{#if theme.enable_custom_meta_tags}}
-{{#each theme.custom_meta_tags as |meta_tag|}}
-{{{meta_tag}}}
-{{/each}}
+  {{#each theme.custom_meta_tags}}
+    {{{this}}}
+  {{/each}}
 {{/if}}
 
 <!-- Пользовательские скрипты для head -->
 {{#if theme.enable_custom_head_scripts}}
-{{#each theme.custom_head_scripts as |head_script|}}
-{{{head_script}}}
-{{/each}}
+  {{#each theme.custom_head_scripts}}
+    {{{this}}}
+  {{/each}}
 {{/if}}
