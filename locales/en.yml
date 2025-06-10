@@ -3,6 +3,7 @@ en:
     description: "Material Design theme specially customized for GIG project with configurable analytics counters and enhanced customization options"
   theme_translations:
     settings:
+      # Old settings (backwards compatibility)
       footer_scripts: "Custom footer scripts (analytics, counters, etc.). This code will be inserted before closing </body> tag on all pages. Each line will be added as separate HTML."
       custom_meta_tags: "Custom meta tags for the head section. Enter HTML meta tags, one per line (e.g., <meta name='author' content='Your Name'>)"
       custom_head_scripts: "Custom scripts for the head section (tracking pixels, verification codes, etc.). Each line will be added as separate HTML."
@@ -13,3 +14,10 @@ en:
       enable_custom_footer_scripts: "Enable custom footer scripts"
       enable_custom_meta_tags: "Enable custom meta tags"
       enable_custom_head_scripts: "Enable custom head scripts"
+      
+      # New settings
+      custom_footer_code: "Custom HTML code for page footer (analytics, counters, scripts, etc.). This code will be inserted before closing </body> tag on all pages."
+      enable_custom_footer_code: "Enable custom HTML code in page footer"
+      custom_head_code: "Custom HTML code for page head (scripts, styles, etc.). This code will be inserted before closing </head> tag on all pages."
+      enable_custom_head_code: "Enable custom HTML code in page head"
+      test_custom_code: "Test custom code"
