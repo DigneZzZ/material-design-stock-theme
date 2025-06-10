@@ -2,9 +2,9 @@
 
 <!-- Пользовательские скрипты -->
 {{#if theme.enable_custom_footer_scripts}}
-{{#if theme.footer_scripts}}
-{{{theme.footer_scripts}}}
-{{/if}}
+{{#each theme.footer_scripts as |footer_script|}}
+{{{footer_script}}}
+{{/each}}
 {{/if}}
 
 <!-- Яндекс.Метрика (если включена) -->
