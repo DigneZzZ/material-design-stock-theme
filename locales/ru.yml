@@ -1,0 +1,11 @@
+ru:
+  theme_metadata:
+    description: "Material Design тема, специально адаптированная для проекта GIG с настраиваемыми счетчиками аналитики и расширенными возможностями кастомизации"
+  theme_translations:
+    settings:
+      footer_scripts: "Пользовательские скрипты для футера (аналитика, счетчики и т.д.). Этот код будет вставлен перед закрывающим тегом </body> на всех страницах."
+      yandex_metrika_id: "ID счетчика Яндекс.Метрики (только цифры)"
+      google_analytics_id: "ID Google Analytics 4 (формат: G-XXXXXXXXXX)"
+      enable_yandex_metrika: "Включить счетчик Яндекс.Метрики"
+      enable_google_analytics: "Включить Google Analytics 4"
+      enable_custom_footer_scripts: "Включить пользовательские скрипты футера"

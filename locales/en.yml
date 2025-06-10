@@ -1,3 +1,11 @@
 en:
   theme_metadata:
-    description: "Inspired by Material Design, this theme comes with several color palettes"
+    description: "Material Design theme specially customized for GIG project with configurable analytics counters and enhanced customization options"
+  theme_translations:
+    settings:
+      footer_scripts: "Custom footer scripts (analytics, counters, etc.). This code will be inserted before closing </body> tag on all pages."
+      yandex_metrika_id: "Yandex Metrika counter ID (only numbers)"
+      google_analytics_id: "Google Analytics 4 Measurement ID (format: G-XXXXXXXXXX)"
+      enable_yandex_metrika: "Enable Yandex Metrika counter"
+      enable_google_analytics: "Enable Google Analytics 4"
+      enable_custom_footer_scripts: "Enable custom footer scripts"

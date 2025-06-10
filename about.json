@@ -1,7 +1,8 @@
 {
   "name": "Material Design Theme - GIG",
-  "about_url": "https://meta.discourse.org/t/material-design-stock-theme/47142",
-  "license_url": "https://github.com/discourse/material-design-stock-theme/blob/master/LICENSE.txt",
+  "about_url": "#",
+  "license_url": "#",
+  "description": "Модифицированная Material Design тема специально для проекта GIG. Включает настраиваемые счетчики аналитики и дополнительные возможности кастомизации.",
   "color_schemes": {
     "Material Teal/Amber": {
       "primary": "212121",
