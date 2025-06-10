@@ -1,6 +1,24 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
 
 <!-- Тест пользовательского кода -->
-{{#if settings.test_custom_code}}
-{{{settings.test_custom_code}}}
-{{/if}}
+<script>
+(function() {
+  // Получаем доступ к настройкам темы
+  var themeSettings = settings || {};
+  
+  // Проверяем наличие пользовательского кода
+  if (themeSettings.test_custom_code) {
+    // Создаем div для вставки кода
+    var customCodeContainer = document.createElement('div');
+    customCodeContainer.innerHTML = themeSettings.test_custom_code;
+    
+    // Вставляем все дочерние элементы в head
+    var fragment = document.createDocumentFragment();
+    while (customCodeContainer.firstChild) {
+      fragment.appendChild(customCodeContainer.firstChild);
+    }
+    
+    document.head.appendChild(fragment);
+  }
+})();
+</script>
