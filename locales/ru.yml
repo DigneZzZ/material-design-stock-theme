@@ -4,8 +4,12 @@ ru:
   theme_translations:
     settings:
       footer_scripts: "Пользовательские скрипты для футера (аналитика, счетчики и т.д.). Этот код будет вставлен перед закрывающим тегом </body> на всех страницах."
+      custom_meta_tags: "Пользовательские мета-теги для секции head. Введите HTML мета-теги (например, <meta name='author' content='Ваше имя'>)"
+      custom_head_scripts: "Пользовательские скрипты для секции head (пиксели отслеживания, коды верификации и т.д.)"
       yandex_metrika_id: "ID счетчика Яндекс.Метрики (только цифры)"
       google_analytics_id: "ID Google Analytics 4 (формат: G-XXXXXXXXXX)"
       enable_yandex_metrika: "Включить счетчик Яндекс.Метрики"
       enable_google_analytics: "Включить Google Analytics 4"
       enable_custom_footer_scripts: "Включить пользовательские скрипты футера"
+      enable_custom_meta_tags: "Включить пользовательские мета-теги"
+      enable_custom_head_scripts: "Включить пользовательские скрипты в head"

@@ -5,6 +5,20 @@ footer_scripts:
     en: "Custom footer scripts (analytics, counters, etc.). This code will be inserted before closing </body> tag on all pages."
     ru: "Пользовательские скрипты для футера (аналитика, счетчики и т.д.). Этот код будет вставлен перед закрывающим тегом </body> на всех страницах."
 
+custom_meta_tags:
+  type: string
+  default: ""
+  description:
+    en: "Custom meta tags for the head section. Enter HTML meta tags (e.g., <meta name='author' content='Your Name'>)"
+    ru: "Пользовательские мета-теги для секции head. Введите HTML мета-теги (например, <meta name='author' content='Ваше имя'>)"
+
+custom_head_scripts:
+  type: string
+  default: ""
+  description:
+    en: "Custom scripts for the head section (tracking pixels, verification codes, etc.)"
+    ru: "Пользовательские скрипты для секции head (пиксели отслеживания, коды верификации и т.д.)"
+
 yandex_metrika_id:
   type: string
   default: ""
@@ -39,3 +53,17 @@ enable_custom_footer_scripts:
   description:
     en: "Enable custom footer scripts"
     ru: "Включить пользовательские скрипты футера"
+
+enable_custom_meta_tags:
+  type: bool
+  default: false
+  description:
+    en: "Enable custom meta tags"
+    ru: "Включить пользовательские мета-теги"
+
+enable_custom_head_scripts:
+  type: bool
+  default: false
+  description:
+    en: "Enable custom head scripts"
+    ru: "Включить пользовательские скрипты в head"

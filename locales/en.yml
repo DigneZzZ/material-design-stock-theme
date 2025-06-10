@@ -4,8 +4,12 @@ en:
   theme_translations:
     settings:
       footer_scripts: "Custom footer scripts (analytics, counters, etc.). This code will be inserted before closing </body> tag on all pages."
+      custom_meta_tags: "Custom meta tags for the head section. Enter HTML meta tags (e.g., <meta name='author' content='Your Name'>)"
+      custom_head_scripts: "Custom scripts for the head section (tracking pixels, verification codes, etc.)"
       yandex_metrika_id: "Yandex Metrika counter ID (only numbers)"
       google_analytics_id: "Google Analytics 4 Measurement ID (format: G-XXXXXXXXXX)"
       enable_yandex_metrika: "Enable Yandex Metrika counter"
       enable_google_analytics: "Enable Google Analytics 4"
       enable_custom_footer_scripts: "Enable custom footer scripts"
+      enable_custom_meta_tags: "Enable custom meta tags"
+      enable_custom_head_scripts: "Enable custom head scripts"
