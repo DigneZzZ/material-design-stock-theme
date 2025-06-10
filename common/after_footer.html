@@ -1,10 +1,9 @@
 <!-- Настраиваемые скрипты для аналитики и счетчиков -->
 
-<!-- Пользовательские скрипты -->
 {{#if theme.enable_custom_footer_scripts}}
-  {{#each theme.footer_scripts}}
-    {{{this}}}
-  {{/each}}
+{{#if theme.footer_scripts}}
+{{{theme.footer_scripts}}}
+{{/if}}
 {{/if}}
 
 <!-- Яндекс.Метрика (если включена) -->

@@ -1,16 +1,13 @@
-<!-- Roboto Font -->
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
 
-<!-- Пользовательские мета-теги -->
 {{#if theme.enable_custom_meta_tags}}
-  {{#each theme.custom_meta_tags}}
-    {{{this}}}
-  {{/each}}
+{{#if theme.custom_meta_tags}}
+{{{theme.custom_meta_tags}}}
+{{/if}}
 {{/if}}
 
-<!-- Пользовательские скрипты для head -->
 {{#if theme.enable_custom_head_scripts}}
-  {{#each theme.custom_head_scripts}}
-    {{{this}}}
-  {{/each}}
+{{#if theme.custom_head_scripts}}
+{{{theme.custom_head_scripts}}}
+{{/if}}
 {{/if}}
